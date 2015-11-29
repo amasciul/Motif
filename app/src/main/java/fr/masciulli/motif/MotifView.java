@@ -22,6 +22,7 @@ public class MotifView extends View {
     private final Paint paint4 = new Paint();
 
     List<List<Point>> points = new ArrayList<>();
+    private int[] colors = {0xFF009688, 0xFF26A69A, 0xFF4DB6AC, 0xFF80CBC4};
 
     public MotifView(Context context) {
         super(context);
@@ -38,17 +39,21 @@ public class MotifView extends View {
         initPaints();
     }
 
-    private void initPaints() {
-        paint2.setColor(getContext().getResources().getColor(R.color.purple));
-        paint1.setColor(getContext().getResources().getColor(R.color.purple_dark));
-        paint3.setColor(getContext().getResources().getColor(R.color.purple_darker));
-        paint4.setColor(getContext().getResources().getColor(R.color.purple_darkest));
-    }
-
-
     public MotifView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         initPaints();
+    }
+
+    public void setColors(int[] colors) {
+        this.colors = colors;
+        initPaints();
+    }
+
+    private void initPaints() {
+        paint2.setColor(colors[0]);
+        paint1.setColor(colors[1]);
+        paint3.setColor(colors[2]);
+        paint4.setColor(colors[3]);
     }
 
     @Override
