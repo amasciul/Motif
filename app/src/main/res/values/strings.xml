@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Motif</string>
+    <string name="action_change_color">Change color</string>
 </resources>

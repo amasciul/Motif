@@ -47,6 +47,7 @@ public class MotifView extends View {
     public void setColors(int[] colors) {
         this.colors = colors;
         initPaints();
+        invalidate();
     }
 
     private void initPaints() {
