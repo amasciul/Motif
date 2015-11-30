@@ -5,4 +5,5 @@
     <string name="action_change_boxpadding">Change box padding</string>
     <string name="box_size_changed">Box size set to %d pixels</string>
     <string name="box_padding_changed">Box padding set to %d pixels</string>
+    <string name="wallpaper_description">Motif wallpaper</string>
 </resources>
