@@ -4,5 +4,15 @@
     <item
         android:id="@+id/action_change_color"
         android:title="@string/action_change_color"
-        app:showAsAction="always" />
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_change_boxsize"
+        android:title="@string/action_change_boxsize"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_change_boxpadding"
+        android:title="@string/action_change_boxpadding"
+        app:showAsAction="never" />
 </menu>

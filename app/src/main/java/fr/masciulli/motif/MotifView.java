@@ -13,14 +13,15 @@ import java.util.List;
 import java.util.Random;
 
 public class MotifView extends View {
-    private static final int BOX_SIZE_PX = 150;
-    private static final int BOX_PADDING_PX = 30;
-
     private final Paint blackPaint = new Paint();
     private final Paint paint1 = new Paint();
+
     private final Paint paint2 = new Paint();
     private final Paint paint3 = new Paint();
     private final Paint paint4 = new Paint();
+
+    private int boxSizePx = 150;
+    private int boxPaddingPx = 30;
 
     List<List<Point>> points = new ArrayList<>();
     private int[] colors = {0xFF009688, 0xFF26A69A, 0xFF4DB6AC, 0xFF80CBC4};
@@ -51,6 +52,21 @@ public class MotifView extends View {
         invalidate();
     }
 
+    public void setBoxSize(int boxSizePx) {
+        this.boxSizePx = boxSizePx;
+        generatePoints(getWidth(), getHeight());
+        invalidate();
+    }
+
+    public void setBoxPadding(int boxPaddingPx) {
+        if (boxPaddingPx >= boxSizePx / 2) {
+            throw new IllegalArgumentException("Box padding can't be greater than half the box size");
+        }
+        generatePoints(getWidth(), getHeight());
+        this.boxPaddingPx = boxPaddingPx;
+        invalidate();
+    }
+
     private void initPaints() {
         paint1.setColor(colors[0]);
         paint2.setColor(colors[1]);
@@ -72,19 +88,19 @@ public class MotifView extends View {
         points.clear();
         Random random = new Random();
 
-        int x0 = -BOX_SIZE_PX;
-        while (x0 < width + BOX_SIZE_PX) {
+        int x0 = -boxSizePx;
+        while (x0 < width + boxSizePx) {
             List<Point> column = new ArrayList<>();
-            int y0 = -BOX_SIZE_PX;
-            while (y0 < height + BOX_SIZE_PX) {
-                int x = x0 + BOX_PADDING_PX + random.nextInt(BOX_SIZE_PX - BOX_PADDING_PX);
-                int y = y0 + BOX_PADDING_PX + random.nextInt(BOX_SIZE_PX - BOX_PADDING_PX);
+            int y0 = -boxSizePx;
+            while (y0 < height + boxSizePx) {
+                int x = x0 + boxPaddingPx + random.nextInt(boxSizePx - boxPaddingPx);
+                int y = y0 + boxPaddingPx + random.nextInt(boxSizePx - boxPaddingPx);
                 Point point = new Point(x, y);
                 column.add(point);
-                y0 += BOX_SIZE_PX;
+                y0 += boxSizePx;
             }
             points.add(column);
-            x0 += BOX_SIZE_PX;
+            x0 += boxSizePx;
         }
     }
 
@@ -97,16 +113,16 @@ public class MotifView extends View {
     }
 
     private void drawGrid(Canvas canvas) {
-        int x = BOX_SIZE_PX;
+        int x = boxSizePx;
         while (x < getWidth()) {
             canvas.drawLine(x, 0, x, getHeight(), blackPaint);
-            x += BOX_SIZE_PX;
+            x += boxSizePx;
         }
 
-        int y = BOX_SIZE_PX;
+        int y = boxSizePx;
         while (y < getHeight()) {
             canvas.drawLine(0, y, getWidth(), y, blackPaint);
-            y += BOX_SIZE_PX;
+            y += boxSizePx;
         }
     }
 
