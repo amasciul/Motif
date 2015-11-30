@@ -14,6 +14,7 @@ import java.util.Random;
 
 public class MotifView extends View {
     private static final int BOX_SIZE_PX = 150;
+    private static final int BOX_PADDING_PX = 30;
 
     private final Paint blackPaint = new Paint();
     private final Paint paint1 = new Paint();
@@ -76,7 +77,9 @@ public class MotifView extends View {
             List<Point> column = new ArrayList<>();
             int y0 = -BOX_SIZE_PX;
             while (y0 < height + BOX_SIZE_PX) {
-                Point point = new Point(x0 + random.nextInt(BOX_SIZE_PX), y0 + random.nextInt(BOX_SIZE_PX));
+                int x = x0 + BOX_PADDING_PX + random.nextInt(BOX_SIZE_PX - BOX_PADDING_PX);
+                int y = y0 + BOX_PADDING_PX + random.nextInt(BOX_SIZE_PX - BOX_PADDING_PX);
+                Point point = new Point(x, y);
                 column.add(point);
                 y0 += BOX_SIZE_PX;
             }
