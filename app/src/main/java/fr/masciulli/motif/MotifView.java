@@ -51,10 +51,14 @@ public class MotifView extends View {
     }
 
     private void initPaints() {
-        paint2.setColor(colors[0]);
-        paint1.setColor(colors[1]);
+        paint1.setColor(colors[0]);
+        paint2.setColor(colors[1]);
         paint3.setColor(colors[2]);
         paint4.setColor(colors[3]);
+        paint1.setFlags(Paint.ANTI_ALIAS_FLAG);
+        paint2.setFlags(Paint.ANTI_ALIAS_FLAG);
+        paint3.setFlags(Paint.ANTI_ALIAS_FLAG);
+        paint4.setFlags(Paint.ANTI_ALIAS_FLAG);
     }
 
     @Override
