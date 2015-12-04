@@ -1,5 +1,8 @@
 package fr.masciulli.motif;
 
+import android.annotation.TargetApi;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -54,8 +57,15 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private void changeColor() {
-        motifView.setColors(colors[colorIndex++ % colors.length]);
+        int[] selectedColors = colors[colorIndex++ % colors.length];
+
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(selectedColors[1]));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(selectedColors[0]);
+        }
+        motifView.setColors(selectedColors);
     }
 
     private void changeBoxSize() {
