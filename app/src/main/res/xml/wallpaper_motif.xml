@@ -2,5 +2,5 @@
 <wallpaper
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:thumbnail="@drawable/thumbnail"
-    android:settingsActivity="fr.masciulli.motif.MainActivity"
+    android:settingsActivity="fr.masciulli.motif.SettingsActivity"
     android:description="@string/wallpaper_description" />
